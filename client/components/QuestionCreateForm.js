@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { withStyles } from '@material-ui/styles'
-import { Mutation } from 'react-apollo'
-import mutation from '../mutations/CreateQuestion'
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/styles';
+import { Mutation } from 'react-apollo';
+import mutation from '../mutations/CreateQuestion';
 import {
   TextField,
   FormControl,
@@ -14,7 +14,7 @@ import {
   Select,
   MenuItem,
   Paper,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -48,46 +48,45 @@ const styles = theme => ({
     marginRight: 5,
     padding: 20,
   },
-})
+});
 
 class QuestionCreateForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       question: '',
       responseType: '',
       category: '',
       sendDayIdx: '',
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
-    this.handleSwitch = this.handleSwitch.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value })
+    this.setState({ [event.target.id]: event.target.value });
   }
 
   handleSelect(event) {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSwitch() {
-    this.setState({ isAdmin: !this.state.isAdmin })
+    this.setState({ isAdmin: !this.state.isAdmin });
   }
 
   handleSubmit(postMutation) {
     if (postMutation) {
-      postMutation()
+      postMutation();
     }
-    this.props.history.push('/questions')
+    this.props.history.push('/questions');
   }
 
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
-      // <div className={classes.container}>
       <Paper className={classes.root}>
         <form>
           <TextField
@@ -141,7 +140,6 @@ class QuestionCreateForm extends Component {
             </Select>
           </FormControl>
         </form>
-        {/* <Divider /> */}
         <Button
           size="small"
           onClick={() => this.handleSubmit()}
@@ -171,8 +169,8 @@ class QuestionCreateForm extends Component {
         </Mutation>
       </Paper>
       // </div>
-    )
+    );
   }
 }
 
-export default withStyles(styles)(QuestionCreateForm)
+export default withStyles(styles)(QuestionCreateForm);
