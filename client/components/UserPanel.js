@@ -1,51 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   ExpansionPanel,
   Typography,
   ExpansionPanelSummary,
-} from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import UserUpdateForm from './UserUpdateForm'
-import UserDetails from './UserDetails'
-import query from '../queries/UserResponseSparkline'
-import { graphql } from 'react-apollo'
-import { LineChart, Line, YAxis } from 'recharts'
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import UserUpdateForm from './UserUpdateForm';
+import UserDetails from './UserDetails';
+import query from '../queries/UserResponseSparkline';
+import { graphql } from 'react-apollo';
+import { LineChart, Line, YAxis } from 'recharts';
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    // flexGrow: '1',
   },
   sparkline: {
     marginLeft: 100,
     marginRight: 10,
     width: 200,
-    // flexGrow: 1,
   },
-  text: {
-    // flexGrow: 3,
-  },
-})
+  text: {},
+});
 
 class UserPanel extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       edit: false,
-    }
-    this.toggleEdit = this.toggleEdit.bind(this)
+    };
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
   toggleEdit() {
-    this.setState(prevState => ({ edit: !prevState.edit }))
+    this.setState(prevState => ({ edit: !prevState.edit }));
   }
 
   render() {
-    const { user, classes } = this.props
-    const { textResponses } = this.props.data
-    const data = textResponses
+    const { user, classes } = this.props;
+    const { textResponses } = this.props.data;
+    const data = textResponses;
 
     return (
       <div>
@@ -77,7 +73,7 @@ class UserPanel extends Component {
           )}
         </ExpansionPanel>
       </div>
-    )
+    );
   }
 }
 
@@ -87,4 +83,4 @@ export default withStyles(styles)(
       variables: { userSlackId: ownProps.user.slackId },
     }),
   })(UserPanel)
-)
+);
